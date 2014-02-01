@@ -23,4 +23,16 @@ angular.module('starter.services', [])
       return pets[petId];
     }
   }
+})
+
+.factory('exerciseSettingsService', function () {
+    function getSettings(exerciseId) {
+        if (exerciseId === 0) {
+            return { blinkSpeed: 400, wordLength: 5, maxBlinkSpeed: 600, minBlinkSpeed: 200, maxWordLength: 10, minWordLength: 3 };
+        }
+        return null;
+    }
+    return {
+        getSettings: getSettings
+    };
 });
