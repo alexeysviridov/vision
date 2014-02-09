@@ -15,9 +15,8 @@ $scope.wordToCheck = "";
 
 $scope.isStarted = false;
 
-
-var _timeoutInMs = 33;
-var _wordLength = 8;
+var _timeoutInMs = 100;
+var _wordLength = 4;
 var _delayBeforeBlink = 2000;
 
 var _timer = null;
@@ -101,7 +100,7 @@ function getNewIndex()
 
 function blinkCurrentWord()
 {
-	$scope.isWordVisible = true;	
+	$scope.isWordVisible = true;
 	_timer = $timeout(function(){ $scope.isWordVisible = false; }, _timeoutInMs);
 }
 
