@@ -16,7 +16,7 @@ $scope.wordToCheck = "";
 $scope.isStarted = false;
 
 
-var _timeoutInMs = 33;
+var _timeoutInMs = 100;
 var _wordLength = 8;
 var _delayBeforeBlink = 2000;
 
@@ -39,7 +39,8 @@ $scope.onStartChanged = function()
 		iterate();
 		return;
 	}
-	$timeout.cancel( _timer );
+    //$timeout.cancel( _timer );
+	clearInterval(_timer);
 	$scope.startTheAppMessage = "Click to start the app";
 };
 
@@ -65,7 +66,7 @@ function iterate()
 
 function startBlink()
 {
-	$timeout(blinkCurrentWord, _delayBeforeBlink);
+    _timer = setInterval(blinkCurrentWord, _delayBeforeBlink);
 }
 
 function getNewWord()
@@ -101,8 +102,14 @@ function getNewIndex()
 
 function blinkCurrentWord()
 {
-	$scope.isWordVisible = true;	
-	_timer = $timeout(function(){ $scope.isWordVisible = false; }, _timeoutInMs);
+    $scope.isWordVisible = true;
+    try {
+        $scope.$apply();
+    }
+    catch (e) {};
+	$timeout(function () {
+	    $scope.isWordVisible = false;
+	}, _timeoutInMs);
 }
 
 function sleep(milliseconds) {
