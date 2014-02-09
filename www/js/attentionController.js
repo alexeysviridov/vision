@@ -15,9 +15,8 @@ $scope.wordToCheck = "";
 
 $scope.isStarted = false;
 
-
 var _timeoutInMs = 100;
-var _wordLength = 8;
+var _wordLength = 4;
 var _delayBeforeBlink = 2000;
 
 var _timer = null;
