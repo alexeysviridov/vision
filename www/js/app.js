@@ -39,7 +39,7 @@ angular.module('starter', ['ionic', 'starter.services', 'starter.vocabulary', 's
       views: {
         'exercises-tab': {
           templateUrl: 'templates/exercise-detail.html',
-          controller: 'exerciseDetailController'
+          controller: 'exerciseDetailsController'
         }
       }
     })

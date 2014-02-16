@@ -1,0 +1,31 @@
+﻿<div ng-controller="attentionController"  style="width: 400px; display: block; margin-left: auto; margin-right: auto;">
+    <div style="height: 333px;">
+        <div class="item item-toggle">
+            {{startTheAppMessage}}
+            <label class="toggle">
+                <input type="checkbox" ng-model="isStarted" ng-change="onStartChanged()" />
+                    <div class="track">
+                        <div class="handle"></div>
+                    </div>
+            </label>
+        </div>
+        <div  style="display: block; margin-left: auto; margin-right: auto; text-align: center; vertical-align: middle;
+            line-height: 180px; height:180px; background: url('/img/dot32.png') no-repeat center; ">&nbsp;<span ng-show="isWordVisible" style="font-size: 75px;">{{ currentWord }}</span><br/>
+
+        </div>
+    </div>
+    <div>
+        <div ng-show="isWordCorrect"></div>
+    </div> 
+    <div>
+        <label class="item item-input">
+            <input type="text" placeholder="word" ng-model="wordToCheck" />
+        </label>
+            <button ng-show="isWordIncorrect" class="button button-full button-assertive" ng-click="onRetryButtonClick()">
+            retry
+        </button>
+        <button ng-hide="isWordIncorrect" class="button button-full button-balanced" ng-click="onCheckButtonClick()">
+            check
+        </button>
+    </div>
+</div>

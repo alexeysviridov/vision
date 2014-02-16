@@ -28,55 +28,50 @@
     <script src="js/vocabulary-rus.js"></script>
     <script src="js/app.js"></script>
     <script src="js/services.js"></script>
-    <script src="js/controllers.js"></script>
+    <script src="js/controllers/appController.js"></script>
+    <script src="js/controllers/attentionController.js"></script>
+    <script src="js/controllers/exerciseIndexController.js"></script>
+    <script src="js/controllers/exerciseDetailsController.js"></script>
 </head>
 
 <!-- 
     'starter' is the name of this angular module (js/app.js)
   -->
-<body ng-app="starter" animation="slide-left-right-ios7">
+<body ng-app="starter" ng-controller="appController" animation="slide-left-right-ios7">
     <side-menus>
-
-   <!-- Center content -->
         <pane side-menu-content>
-
-         <header class="bar bar-header bar-dark">
-            <button class="button button-icon" ng-click="sideMenuController.toggleLeft()">
-              <i class="icon ion-navicon"></i>
-            </button>
-            <h1 class="title"></h1>
-          </header>
+            <header class="bar bar-header bar-dark">
+                <button class="button button-icon" ng-show="sideMenuSettings.leftSideMenuTemplateUrl" ng-click="sideMenuController.toggleLeft()">
+                    <i class="icon ion-navicon"></i>
+                </button>
+                <h1 class="title"></h1>
+                <button class="button button-icon" ng-show="sideMenuSettings.rightSideMenuTemplateUrl" ng-click="sideMenuController.toggleRight()">
+                    <i class="icon ion-navicon"></i>
+                </button>
+            </header>
             <!-- 
-              The nav bar that will be updated as we navigate between views
-              Additional attributes set its look, nav-bar animation and icons
-              Icons provided by Ionicons: http://ionicons.com/ 
+                The nav bar that will be updated as we navigate between views
+                Additional attributes set its look, nav-bar animation and icons
+                Icons provided by Ionicons: http://ionicons.com/ 
             -->
             <nav-bar type="bar-dark" 
-                     animation="nav-title-slide-ios7" 
-                     back-button-type="button-icon" 
-                     back-button-icon="icon ion-arrow-left-c"></nav-bar>
+                        animation="nav-title-slide-ios7" 
+                        back-button-type="button-icon" 
+                        back-button-icon="icon ion-arrow-left-c"></nav-bar>
 
             <!-- 
-              The views will be rendered in the <nav-view> directive below
-              Templates are in the /templates folder (but you could also
-              have templates inline in this html file if you'd like).
+                The views will be rendered in the <nav-view> directive below
+                Templates are in the /templates folder (but you could also
+                have templates inline in this html file if you'd like).
             -->
             <nav-view></nav-view>
         </pane>
-
-        <side-menu side="left">
-            <header class="bar bar-header bar-dark">
-              <h1 class="title">...</h1>
-     
-            </header>
-            <content has-header="true" scroll="false">
-              <list>
-                <item >1</item>
-                <item >2</item>
-                <item >3</item>
-              </list>
-            </content>
+        <side-menu side="left" ng-show="sideMenuSettings.leftSideMenuTemplateUrl">
+            <div ng-include="sideMenuSettings.leftSideMenuTemplateUrl"></div>
         </side-menu>
-  </side-menus>
+        <side-menu side="right" ng-show="sideMenuSettings.rightSideMenuTemplateUrl">
+            <div ng-include="sideMenuSettings.rightSideMenuTemplateUrl"></div>
+        </side-menu>
+    </side-menus>
 </body>
 </html>
