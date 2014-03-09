@@ -7,27 +7,41 @@
         
         <div>
             <span class="input-label">Blink Speed</span>
+            <span>{{sideMenuSettings.rightSideMenuScope.settings.blinkSpeed}}</span>
         </div>
         <div class="range">
-            <i class="icon ion-volume-low"></i>
-            <input type="range" name="volume" ng-model="sideMenuSettings.rightSideMenuScope.settings.blinkSpeed">
-            <i class="icon ion-volume-high"></i>
+            <span class="step">
+                <i class="icon ion-minus"></i>
+            </span>
+            <input type="range" name="blinkSpeed" 
+               min="{{sideMenuSettings.rightSideMenuScope.settings.minBlinkSpeed}}" max="{{sideMenuSettings.rightSideMenuScope.settings.maxBlinkSpeed}}"
+                ng-model="sideMenuSettings.rightSideMenuScope.settings.blinkSpeed"/>
+            <span class="step">
+                <i class="icon ion-plus"></i>
+            </span>
         </div>
         
             
         
         <div>
-            <span class="input-label">Word Length</span>
+            <span class="input-label">Word Length:</span>
+            <span>{{sideMenuSettings.rightSideMenuScope.settings.wordLength}}</span>
         </div>
         <div class="range">
-            <i class="icon ion-volume-low"></i>
-            <input type="range" name="volume" ng-model="sideMenuSettings.rightSideMenuScope.settings.wordLength">
-            <i class="icon ion-volume-high"></i>
+            <span class="step">
+                <i class="icon ion-minus"></i>
+            </span>
+            <input type="range" name="wordLength" ng-model="sideMenuSettings.rightSideMenuScope.settings.wordLength"
+                min="{{sideMenuSettings.rightSideMenuScope.settings.minWordLength}}"
+                max="{{sideMenuSettings.rightSideMenuScope.settings.maxWordLength}}">
+            <span class="step">
+                <i class="icon ion-plus"></i>
+            </span>
         </div>
         
         <div style="float:right">
-            <button class="button button-dark" ng-click="closeModal()">Apply</button>
-            <button class="button button-dark" ng-click="closeModal()">Cancel</button>
+            <button class="button button-dark" ng-click="sideMenuSettings.rightSideMenuScope.applySettings()">Apply</button>
+            <button class="button button-dark" ng-click="sideMenuSettings.rightSideMenuScope.cancelSettings()">Cancel</button>
         </div>
     </div>
     </div>

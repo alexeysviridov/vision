@@ -3,10 +3,48 @@ starterControllers
 
 // A simple controller that fetches a list of data from a service
 .controller('attentionController', function($scope, wordsService, $filter, $timeout) {
-  // "Pets" is a service returning mock data (services.js)
+    // "Pets" is a service returning mock data (services.js)
+
+    var rightSideMenuScope = new (function (settingsChangedCallback) {
+        var scope =  {
+            exercise: $scope.exercise,
+            settings: createSettingsCopy($scope.settings),
+            cancelSettings: function () {
+                setScopeValues($scope.settings);
+                $scope.sideMenuController.close();
+            },
+            applySettings: function () {
+                setSettingsValues(scope.settings);
+                $scope.sideMenuController.close();
+                settingsChangedCallback();
+            }
+        }
+        function createSettingsCopy(settings) {
+            return { maxBlinkSpeed: settings.maxBlinkSpeed, minBlinkSpeed: settings.minBlinkSpeed, maxWordLength: settings.maxWordLength, minWordLength: settings.minWordLength };
+        }
+
+        function setScopeValues(settings) {
+            scope.settings.blinkSpeed = settings.blinkSpeed;
+            scope.settings.wordLength = settings.wordLength;
+        }
+
+        function setSettingsValues(settings) {
+            $scope.settings.blinkSpeed = parseInt(settings.blinkSpeed);
+            $scope.settings.wordLength = parseInt(settings.wordLength);
+        }
+
+        $timeout(function () {
+            setScopeValues($scope.settings);
+        }, 100);
+        return scope;
+    })(initialize);
     
     $scope.sideMenuSettings.rightSideMenuTemplateUrl = 'templates/exercise-settings/0-settings.html';
-    $scope.sideMenuSettings.rightSideMenuScope = { exercise: $scope.exercise, settings: $scope.settings };
+    $scope.sideMenuSettings.rightSideMenuScope = rightSideMenuScope;
+
+   
+
+    
     $scope.sideMenuController.left.isEnabled = false;
     $scope.sideMenuController.right.isEnabled = true;
 
@@ -23,6 +61,7 @@ starterControllers
     var _timeoutInMs = 100;
     var _wordLength = 4;
     var _delayBeforeBlink = 2000;
+    var _isStarted = false;
 
     var _timer = null;
     var _allWords = null;
@@ -125,8 +164,11 @@ starterControllers
       }
     }
 
+
     function initialize()
     {
+        _timeoutInMs = $scope.settings.blinkSpeed;
+        _wordLength = $scope.settings.wordLength;
 	    _allWords = wordsService.getByLength(_wordLength);
     }
 
