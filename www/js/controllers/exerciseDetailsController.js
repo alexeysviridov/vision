@@ -6,4 +6,7 @@
     $scope.settings = exerciseSettingsService.getSettings($scope.exercise.id);
 
     $scope.exercisePath = 'templates/exercises/' + $stateParams.petId + '.html'
+
+    $scope.rightButtons = [];
+    $scope.leftButtons = [];
 });

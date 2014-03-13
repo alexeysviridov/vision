@@ -4,9 +4,4 @@
     $scope.sideMenuController.right.isEnabled = false;
     $scope.sideMenuController.left.isEnabled = false;
     $scope.exercises = exerciseService.all();
-
-    $scope.toggleProjects = function () {
-        $scope.sideMenuController.toggleLeft();
-    };
-
 });

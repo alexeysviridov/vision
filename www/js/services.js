@@ -28,7 +28,7 @@ angular.module('starter.services', [])
 .factory('exerciseSettingsService', function () {
     function getSettings(exerciseId) {
         if (exerciseId === 0) {
-            return { blinkSpeed: 400, wordLength: 5, maxBlinkSpeed: 600, minBlinkSpeed: 200, maxWordLength: 10, minWordLength: 3 };
+            return { blinkSpeed: 10, wordLength: 5, maxBlinkSpeed: 400, minBlinkSpeed: 5, maxWordLength: 10, minWordLength: 3 };
         }
         return null;
     }
