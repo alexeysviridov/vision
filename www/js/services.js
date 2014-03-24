@@ -9,7 +9,7 @@ angular.module('starter.services', [])
   // Some fake testing data
   var pets = [
     { id: 0, title: 'attention', description: 'Furry little creatures. Obsessed with plotting assassination, but never following through on it.' },
-    { id: 1, title: 'peripheral vision', description: 'Lovable. Loyal almost to a fault. Smarter than they let on.' },
+    { id: 1, title: 'concentration', description: 'Train your conentration skills.' },
     { id: 2, title: 'anticipation', description: 'Everyone likes turtles.' },
     { id: 3, title: 'imaginative reading', description: 'An advanced pet. Needs millions of gallons of salt water. Will happily eat you.' }
   ];
