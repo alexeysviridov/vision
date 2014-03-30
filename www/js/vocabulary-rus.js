@@ -2441,7 +2441,6 @@ return {
       return words[wordId];
     },
     getByLength: function(length) {
-      // Simple index lookup
       return $filter('wordsByLength')(words, length);
     },
   };
