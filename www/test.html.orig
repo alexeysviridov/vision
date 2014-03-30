@@ -28,8 +28,12 @@
     <script src="js/services.js"></script>
     <script src="js/vocabulary-rus.js"></script>
     <script src="js/controllers/appController.js"></script>
+<<<<<<< HEAD
+    <script src="js/controllers/attentionController.js"></script>
+=======
    <!--<script src="js/controllers/peripheralVisionController.js"></script> -->
    <script src="js/controllers/anticipationController.js"></script>
+>>>>>>> 0cdd824695d198189f2f13da3c8bf8eb9c99553c
 </head>
 
   <!-- 
