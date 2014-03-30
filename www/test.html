@@ -28,14 +28,15 @@
     <script src="js/services.js"></script>
     <script src="js/vocabulary-rus.js"></script>
     <script src="js/controllers/appController.js"></script>
-    <script src="js/controllers/attentionController.js"></script>
+   <!--<script src="js/controllers/peripheralVisionController.js"></script> -->
+   <script src="js/controllers/anticipationController.js"></script>
 </head>
 
   <!-- 
     'starter' is the name of this angular module (js/app.js)
 -->
 <body ng-app="starter" animation="slide-left-right-ios7">
-    <div id='content' ng-app='MyTutorialApp' ng-controller='attentionController' 
+    <div id='content' ng-app='MyTutorialApp' ng-controller='anticipationController' 
     style="width: 400px;
     display: block;
     margin-left: auto;
@@ -57,10 +58,23 @@
 vertical-align: middle;
 line-height: 180px; 
 height:180px;
-background: url('/img/dot32.png') no-repeat center; ">&nbsp;<span ng-show="isWordVisible"
-style="font-size: 75px;">{{ currentWord }}</span><br/></div>
+background: url('/img/dot32.png') no-repeat center; ">&nbsp;
+<!--<span ng-show="isWordVisible"
+style="font-size: 55px;">{{ currentWord1 }}<span style="width: 100px; display:inline-block;" ></span>{{ currentWord2 }}</span>-->
+<span ng-show="isWordVisible" style="font-size: 55px;">{{ currentWord }}</span><br/></div>
     </div>
+<!--
+word length 20 - font size 35;
+            16 - 45
+            15 - 45 
+            14 - 45
+            13 - 50
+            12 - 55
+            11 - 65
+            10 - 70
+            9 - 75
 
+-->
 
     <div>
         <div ng-show="isWordCorrect"></div>
@@ -72,7 +86,7 @@ style="font-size: 75px;">{{ currentWord }}</span><br/></div>
          <button ng-show="isWordIncorrect" class="button button-full button-assertive" ng-click="onRetryButtonClick()">
             retry
         </button>
-        <button ng-hide="isWordIncorrect" class="button button-full button-balanced" ng-click="onCheckButtonClick()">
+        <button ng-show="isWordCorrect" class="button button-full button-balanced" ng-click="onCheckButtonClick()">
             check
         </button>
     </div>
