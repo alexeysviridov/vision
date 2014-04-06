@@ -41,7 +41,17 @@
 
             };
 
-            var myAnalogClock = new AnalogClock(config);
+            var clocks = $(element).find('#analog-clock').imageClock(config);
+            //var myAnalogClock = new AnalogClock(config);
+
+            scope.$watch('isStarted', function (newVal, oldVal) {
+                if (newVal) {
+                    clocks.reset();
+                    clocks.start();
+                } else {
+                    clocks.stop();
+                }
+            });
         }
     };
 })
